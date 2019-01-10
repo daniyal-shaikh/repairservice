@@ -13,7 +13,7 @@
             </div>
          @endif
         <h4>Modal Master</h4>
-        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addmodal">Add Modal</button><br>
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addmodal">Add Model</button><br>
           <br>
 
            <div class="row">

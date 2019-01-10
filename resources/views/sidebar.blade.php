@@ -12,7 +12,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{url('dashboard')}}">Dashboard</a></li>
         <li><a href="{{url('company-master')}}">Company Master</a></li>
-        <li><a href="{{url('model-master')}}">Modal Master</a></li>
+        <li><a href="{{url('model-master')}}">Model Master</a></li>
         <li><a href="{{url('issue-master')}}">Issue Master</a></li>
         <li><a href="{{url('price-master')}}">Price Master</a></li>
       </ul>
@@ -27,7 +27,7 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="{{url('dashboard')}}">Dashboard</a></li>
          <li><a href="{{url('company-master')}}">Company Master</a></li>
-        <li><a href="{{url('model-master')}}">Modal Master</a></li>
+        <li><a href="{{url('model-master')}}">Model Master</a></li>
         <li><a href="{{url('issue-master')}}">Issue Master</a></li>
         <li><a href="{{url('price-master')}}">Price Master</a></li>
       </ul><br>
