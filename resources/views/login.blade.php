@@ -101,17 +101,18 @@
           <div class="col-md-7">
             <div class="form-wrap">
               <h2 class="mb-4">Log in with your account</h2>
-              <form action="#" method="post">
+              <form action="{{url('login')}}" method="post">
+              {{ csrf_field() }}
                 <div class="row">
                   <div class="col-md-12 form-group">
                     <label for="name">Mobile No</label>
-                    <input type="text" id="mobileno" class="form-control py-2">
+                    <input type="text" id="mobileno"  name="mobileno" class="form-control py-2">
                   </div>
                 </div>
                 <div class="row mb-5">
                   <div class="col-md-12 form-group">
                     <label for="name">Password</label>
-                    <input type="password" id="password" class="form-control py-2">
+                    <input type="password" id="password" name="password" class="form-control py-2">
                   </div>
                 </div>
                 <div class="row display" id="errormessage">
@@ -122,7 +123,8 @@
                   </div>
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input type="button" value="Login" onclick="login();" class="btn btn-primary px-5 py-2">
+                    <!-- <input type="button" value="Login" onclick="login();" class="btn btn-primary px-5 py-2"> -->
+                    <input type="Submit" value="Login"  class="btn btn-primary px-5 py-2">
                   </div>
                   <div class="col-md-6 form-group">
                     <input type="button" value="Register" onclick="callRegister();" class="btn btn-primary px-5 py-2">
