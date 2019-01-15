@@ -30,7 +30,7 @@ class LoginController extends InitialController
             $request->session()->flush();
             $request->session()->put('userid',$val->userid);
             $request->session()->put('fullname',$val->fullname);         
-            return redirect()->intended('dashboard1');
+            return redirect()->intended('dashboard');
         }else{
             Session::flash('msg', "Invalid email or password. Please Try again! ");      
             return redirect()->intended('dashboard');
