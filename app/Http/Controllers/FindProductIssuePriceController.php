@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Responce;
+use Response;
+use Validator;
+use Redirect;
+use Session;
+use URL;
+use Mail;
 
 class FindProductIssuePriceController extends Controller
 {
@@ -20,7 +25,8 @@ class FindProductIssuePriceController extends Controller
 	}
 
 	public function getprice(Request $req){
-		$data = DB::select('call Get_price_depends_issue(?,?,?)',array($req->comid,$req->mid,$req->iid));
+		$user_id = 1;
+		$data = DB::select('call Get_price_depends_issue(?,?,?,?)',array($req->comid,$req->mid,$req->iid,$user_id));
 		return $data;
 	}
 }

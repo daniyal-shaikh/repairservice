@@ -178,6 +178,12 @@
             data:{ comid:comid,mid:mid,iid:iid },
             success:function(datamsg) {
               $('#priceModal').modal('show');
+
+              $('#comname').empty();
+              $('#modname').empty();
+              $('#issuename').empty();
+              $('#price').empty();
+
               $('#comname').append(datamsg[0].company_name);
               $('#modname').append(datamsg[0].modal_name);
               $('#issuename').append(datamsg[0].issue_name);
@@ -192,7 +198,7 @@
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" onclick="window.location.reload()">&times;</button>
         </div>
         <div class="modal-body">
           <label><b>Company Name :</b></label> <label id="comname"></label><br>
@@ -201,7 +207,7 @@
           <label><b>Price :</b></label> <label id="price"></label><br>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.reload()">Close</button>
         </div>
       </div>
     </div>

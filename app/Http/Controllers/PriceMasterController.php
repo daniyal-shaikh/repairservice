@@ -10,10 +10,10 @@ class PriceMasterController extends Controller
 {
     public function pricemaster(){
     	$getcompany = DB::select('call Get_all_company()');
-    	$getmodal = DB::select('call Get_model()');
+    	//$getmodal = DB::select('call Get_model()');
     	$getissue = DB::select('call Get_all_issue()');
     	$getprice = DB::select('call Get_all_price()');
-    	return view('PriceMaster',['getcompany'=>$getcompany,'getmodal'=>$getmodal,'getissue'=>$getissue,'getprice'=>$getprice]);
+    	return view('PriceMaster',['getcompany'=>$getcompany,'getissue'=>$getissue,'getprice'=>$getprice]);
     }
 
     public function addprice(Request $req){

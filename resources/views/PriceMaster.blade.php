@@ -130,7 +130,7 @@
             {{ csrf_field() }}
 
           <label>Select Company</label>
-          <select type="text" name="comid" id="comid" class="form-control" required="true">
+          <select type="text" name="comid" id="comid" class="form-control comid" required="true">
           	<option selected disabled="" value="">----Select----</option>
           	@foreach($getcompany as $val)
           		<option value="{{ $val->company_id }}">{{ $val->company_name }}</option>
@@ -141,9 +141,6 @@
           <label>Select Model</label>
           <select type="text" name="mid" id="mid" class="form-control" required="true">
           	<option selected disabled="" value="">----Select----</option>
-          	@foreach($getmodal as $val)
-          		<option value="{{ $val->model_id }}">{{ $val->modal_name }}</option>
-          	@endforeach
           </select>
           <br>
 
@@ -181,7 +178,7 @@
             {{ csrf_field() }}
           <input type="hidden" name="upid" id="upid" value="">
           <label>Select Company</label>
-          <select type="text" name="ucomid" id="ucomid" class="form-control" required="true">
+          <select type="text" name="ucomid" id="ucomid" class="form-control ucomid" required="true">
             <option selected disabled="" value="">----Select----</option>
             @foreach($getcompany as $val)
               <option value="{{ $val->company_id }}">{{ $val->company_name }}</option>
@@ -192,9 +189,6 @@
           <label>Select Model</label>
           <select type="text" name="umid" id="umid" class="form-control" required="true">
             <option selected disabled="" value="">----Select----</option>
-            @foreach($getmodal as $val)
-              <option value="{{ $val->model_id }}">{{ $val->modal_name }}</option>
-            @endforeach
           </select>
           <br>
 
@@ -219,4 +213,35 @@
     </div>
   </div>
 
+  <script type="text/javascript">
+    $('.comid').change(function(){
+          var companyid = $(this).val();
+          $('#mid').empty();
+          $.ajax({
+            url:'get-model-depend-company/{companyid}',
+            type:'get',
+            data:{ companyid:companyid },
+            success:function(resdata){
+              $.each(resdata, function(index) {
+              $('#mid').append('<option value="'+resdata[index].model_id+'">'+resdata[index].modal_name+'</option>');
+              });
+            }
+          })
+      });
+
+    $('.ucomid').change(function(){
+          var companyid = $(this).val();
+          $('#umid').empty();
+          $.ajax({
+            url:'get-model-depend-company/{companyid}',
+            type:'get',
+            data:{ companyid:companyid },
+            success:function(resdata){
+              $.each(resdata, function(index) {
+              $('#umid').append('<option value="'+resdata[index].model_id+'">'+resdata[index].modal_name+'</option>');
+              });
+            }
+          })
+      });
+  </script>
 
