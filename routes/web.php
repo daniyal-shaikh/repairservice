@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/checklogin', function () {
+//     return view('welcome');
+// });
+
+Route::get('/','LoginController@checklogin');
 
 Route::get('register','RegisterController@register');
-Route::get('login','LoginController@login');
+Route::post('login','LoginController@login');
 
 //------------------Company Master-------------------------
 Route::get('dashboard','DashboardController@viewdashboard');

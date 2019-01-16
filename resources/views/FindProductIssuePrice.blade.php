@@ -32,9 +32,9 @@
 
           <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
             <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link active" href="#">Home</a>
-              </li>
+              </li> -->
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -58,7 +58,7 @@
                 </div>
 
               </li> -->
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Blog</a>
               </li>
               <li class="nav-item">
@@ -66,11 +66,11 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
-              </li>
+              </li> -->
             </ul>
             <ul class="navbar-nav absolute-right">
               <li>
-                <a href="{{url('login')}}">Login</a> / <a href="{{url('register')}}">Register</a>
+                <a href="{{url('login')}}">Logout</a> / <a href="{{url('register')}}">Register</a>
               </li>
             </ul>
             
