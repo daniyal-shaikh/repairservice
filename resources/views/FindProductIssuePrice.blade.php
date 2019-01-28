@@ -69,9 +69,15 @@
               </li> -->
             </ul>
             <ul class="navbar-nav absolute-right">
+              @if($getrole[0]->role =='Admin' || $getrole[0]->role =='User')
               <li>
-                <a href="{{url('login')}}">Logout</a> / <a href="{{url('register')}}">Register</a>
+                <a href="{{url('logout')}}">Logout</a>
               </li>
+              @else
+               <li>
+                <a href="{{url('login-view')}}">Login</a> / <a href="{{url('register')}}">Register</a>
+              </li>
+              @endif  
             </ul>
             
           </div>
@@ -177,17 +183,22 @@
             type:'get',
             data:{ comid:comid,mid:mid,iid:iid },
             success:function(datamsg) {
-              $('#priceModal').modal('show');
+              if(datamsg != '1'){
+                  $('#priceModal').modal('show');
 
-              $('#comname').empty();
-              $('#modname').empty();
-              $('#issuename').empty();
-              $('#price').empty();
+                  $('#comname').empty();
+                  $('#modname').empty();
+                  $('#issuename').empty();
+                  $('#price').empty();
 
-              $('#comname').append(datamsg[0].company_name);
-              $('#modname').append(datamsg[0].modal_name);
-              $('#issuename').append(datamsg[0].issue_name);
-              $('#price').append(datamsg[0].price);
+                  $('#comname').append(datamsg[0].company_name);
+                  $('#modname').append(datamsg[0].modal_name);
+                  $('#issuename').append(datamsg[0].issue_name);
+                  $('#price').append(datamsg[0].price);
+              }else{
+                alert("Please login");
+                window.location.href = "login-view";
+              }
             }
           });
         }

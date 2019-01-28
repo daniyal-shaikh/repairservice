@@ -10,6 +10,7 @@ use Redirect;
 use Session;
 use URL;
 use Mail;
+use Auth;
 
 class LoginController extends InitialController
 {   
@@ -24,24 +25,28 @@ class LoginController extends InitialController
 
     public function login(Request $request){
         
-        $query=DB::select('call login(?,?)',array($request->mobileno,$request->password));               
-          if($query){
+        $query=DB::select('call login(?,?)',array($request->mobileno,$request->password));
+            if(count($query)>0){
             $val=$query[0];
             $request->session()->flush();
             $request->session()->put('userid',$val->userid);
             $request->session()->put('fullname',$val->fullname);         
             return redirect()->intended('dashboard');
         }else{
-            Session::flash('msg', "Invalid email or password. Please Try again! ");      
-            return redirect()->intended('dashboard');
+            return redirect()->back()->with('message', 'Invalid User or password. Please Try again !');    
         }                         
     }
 
 
     public function registeruser(Request $req)
     {
-        //return "qwewr";exit();
         $detail = DB::select('call createuser(?,?,?,?,?)',array($req->fullname,$req->phoneno,$req->emailid,$req->password,''));        
         return $this::send_success_response("Message","success",$detail);        
+    }
+
+    public function logout(Request $req){
+        $req->session()->flush();
+        Auth::logout();
+        return redirect('login-view');
     }
 }

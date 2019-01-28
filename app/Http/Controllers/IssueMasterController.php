@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Responce;
 use DB;
+use Response;
+use Validator;
+use Redirect;
+use Session;
+use URL;
+use Mail;
 
 class IssueMasterController extends Controller
 {
     public function issuemaster(Request $req){
+        $user_id = Session::get('userid');
     	$getissue = DB::select('call Get_all_issue()');
-    	return view('IssueMaster',['getissue'=>$getissue]);
+        $getrole = DB::select('call Get_role(?)',array($user_id));
+    	return view('IssueMaster',['getissue'=>$getissue,'getrole'=>$getrole]);
     }
 
     public function addissue(Request $req){

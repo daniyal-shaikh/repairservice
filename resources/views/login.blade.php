@@ -19,7 +19,11 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    
+    @if(session()->has('message'))
+       <div class="alert alert-success">
+          {{ session()->get('message') }}
+      </div>
+    @endif
     <!-- <header role="banner">
      
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -94,7 +98,6 @@
       </div>
     </section>
     <!-- END section -->
-    
     <section class="site-section">
       <div class="container">
         <div class="row justify-content-center">
@@ -106,13 +109,13 @@
                 <div class="row">
                   <div class="col-md-12 form-group">
                     <label for="name">Mobile No</label>
-                    <input type="text" id="mobileno"  name="mobileno" class="form-control py-2">
+                    <input type="text" id="mobileno"  name="mobileno" class="form-control py-2" required="true">
                   </div>
                 </div>
                 <div class="row mb-5">
                   <div class="col-md-12 form-group">
                     <label for="name">Password</label>
-                    <input type="password" id="password" name="password" class="form-control py-2">
+                    <input type="password" id="password" name="password" class="form-control py-2" required="true">
                   </div>
                 </div>
                 <div class="row display" id="errormessage">
@@ -250,6 +253,7 @@ function login(){
         alert('Call Login');
     }
 }
+
 </script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.0.js"></script>
@@ -261,5 +265,12 @@ function login(){
     <script src="js/jquery.animateNumber.min.js"></script>
 
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function(){
+          setTimeout(function(){
+            $("div.alert").remove();
+          }, 3000 ); // 5 secs
+        });
+   </script>
   </body>
 </html>

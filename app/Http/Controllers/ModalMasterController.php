@@ -3,15 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Responce;
 use DB;
+use Response;
+use Validator;
+use Redirect;
+use Session;
+use URL;
+use Mail;
 
 class ModalMasterController extends Controller
 {
     public function modelmaster(){
+        $user_id = Session::get('userid');
     	$getcompany = DB::select('call Get_all_company()');
     	$getmodal = DB::select('call Get_model()');
-    	return view('ModalMaster',['getcompany'=>$getcompany,'getmodal'=>$getmodal]);
+        $getrole = DB::select('call Get_role(?)',array($user_id));
+    	return view('ModalMaster',['getcompany'=>$getcompany,'getmodal'=>$getmodal,'getrole'=>$getrole]);
     }
 
     public function addmodal(Request $req){

@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Responce;
 use DB;
+use Response;
+use Validator;
+use Redirect;
+use Session;
+use URL;
+use Mail;
 
 class PriceMasterController extends Controller
 {
     public function pricemaster(){
+        $user_id = Session::get('userid');
     	$getcompany = DB::select('call Get_all_company()');
     	//$getmodal = DB::select('call Get_model()');
     	$getissue = DB::select('call Get_all_issue()');
     	$getprice = DB::select('call Get_all_price()');
-    	return view('PriceMaster',['getcompany'=>$getcompany,'getissue'=>$getissue,'getprice'=>$getprice]);
+        $getrole = DB::select('call Get_role(?)',array($user_id));
+    	return view('PriceMaster',['getcompany'=>$getcompany,'getissue'=>$getissue,'getprice'=>$getprice,'getrole'=>$getrole]);
     }
 
     public function addprice(Request $req){

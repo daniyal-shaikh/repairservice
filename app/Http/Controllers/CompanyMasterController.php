@@ -3,14 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Responce;
 use DB;
+use Response;
+use Validator;
+use Redirect;
+use Session;
+use URL;
+use Mail;
+
 
 class CompanyMasterController extends Controller
 {
     public function companymaster(){
+        $user_id = Session::get('userid');
     	$getcompany = DB::select('call Get_all_company()');
-    	return view('CompanyMaster',['getcompany'=>$getcompany]);
+        $getrole = DB::select('call Get_role(?)',array($user_id));
+    	return view('CompanyMaster',['getcompany'=>$getcompany,'getrole'=>$getrole]);
     }
 
     public function addcompany(Request $req){

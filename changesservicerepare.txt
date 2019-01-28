@@ -1,0 +1,15 @@
+ 1) app/Http/Controllers/FindProductIssuePriceController.php
+ 2) app/Http/Controllers/PriceMasterController.php
+ 3) resources/views/FindProductIssuePrice.blade.php
+ 4) resources/views/PriceMaster.blade.php
+ 5) user_search_history (table)
+ 6) Get_price_depends_issue (sp)
+ 7) Get_user_History_Data (sp)
+ 8) UserHistoryController controller
+ 9) userhistory (page)
+ 10) Del_History_data (sp)
+ 11) web.php
+ 12) register (page)
+ 13) sidebar (page)
+ 14) login controller
+ 15) login page

@@ -266,7 +266,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 function callLogin(){
-    window.location.href ="login";
+    window.location.href ="/";
 }
 
  function IsEmail(email) {
@@ -287,7 +287,8 @@ function registeruser(){
               $('#message').text(data.Data[0].Message);
             }
             else{
-              alert('Success');
+              alert('User Registration Successfully.');
+              location.reload();
             }          
           },
           error: function(XMLHttpRequest, textStatus, errorThrown) {

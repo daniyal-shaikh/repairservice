@@ -14,9 +14,15 @@ use Mail;
 class FindProductIssuePriceController extends Controller
 {
 	public function index_find_price(){
+		 $user_id = Session::get('userid');
+		 if($user_id == '' || $user_id == null){
+		 	$user_id = '0';
+		 }
+		 //print_r($user_id); exit();
 		 $getCompany = DB::select('call Get_all_company()');
 		 $getissue = DB::select('call Get_all_issue()');
-		 return view('FindProductIssuePrice',['getCompany'=>$getCompany,'getissue'=>$getissue]);
+		 $getrole = DB::select('call Get_role(?)',array($user_id));
+		 return view('FindProductIssuePrice',['getCompany'=>$getCompany,'getissue'=>$getissue,'getrole'=>$getrole]);
 	}
 
 	public function getmodeldependcompany(Request $req){
@@ -25,8 +31,12 @@ class FindProductIssuePriceController extends Controller
 	}
 
 	public function getprice(Request $req){
-		$user_id = 1;
-		$data = DB::select('call Get_price_depends_issue(?,?,?,?)',array($req->comid,$req->mid,$req->iid,$user_id));
-		return $data;
+		$user_id = Session::get('userid');
+		if($user_id != '0' && $user_id != null && $user_id != ''){
+			$data = DB::select('call Get_price_depends_issue(?,?,?,?)',array($req->comid,$req->mid,$req->iid,$user_id));
+			return $data;
+		}else{
+			return '1';
+		}	
 	}
 }
